@@ -10,7 +10,12 @@ let idCount = links.length;
 
 const Query = {
   info: () => null, // `This is the API of a Hackernews Clone`
-  feed: () => links
+  feed: () => links,
+  link: (_: any, { id }: any) => {
+    const index = links.findIndex(link => link.id === id);
+
+    return index > -1 ? links[index] : null;
+  }
 };
 
 const Mutation = {

@@ -4,6 +4,7 @@ const typeDefs = gql`
   type Query {
     info: String!
     feed: [Link!]!
+    link(id: ID!): Link
   }
 
   type Mutation {
