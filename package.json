@@ -1,7 +1,7 @@
 {
   "name": "hackernews-express-apollo",
   "version": "1.0.0",
-  "description": "The backend of a Hackernews with node and apollo.",
+  "description": "The backend of a Hackernews with Node and Apollo.",
   "scripts": {
     "tsc": "tsc",
     "start": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
