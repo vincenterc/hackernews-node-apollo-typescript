@@ -1,29 +1,20 @@
-let links = [
-  {
-    id: "link-0",
-    url: "www.howtographql.com",
-    description: "Fullstack tutorial for GraphQL"
-  }
-];
-
-let idCount = links.length;
-
 const Query = {
-  info: () => null, // `This is the API of a Hackernews Clone`
-  feed: () => links
+  info: () => `This is the API of a Hackernews Clone`,
+  feed: async (_parent: any, _args: any, context: any) => {
+    let Link = context.entities.Link;
+
+    return await context.connection.getRepository(Link).find();
+  }
 };
 
 const Mutation = {
-  post: (parent: any, args: any) => {
-    const link = {
-      id: `link-${idCount++}`,
-      description: args.description,
-      url: args.url
-    };
+  post: async (_parent: any, args: any, context: any) => {
+    let Link = context.entities.Link;
+    let link = new Link();
+    link.url = args.url;
+    link.description = args.description;
 
-    links.push(link);
-
-    return link;
+    return await context.connection.manager.save(link);
   }
 };
 
