@@ -1,0 +1,19 @@
+{
+  "name": "hackernews-express-apollo",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "tsc": "tsc",
+    "start": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "prod": "tsc && node ./build/index.js"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.2.2",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "typescript": "^3.5.2"
+  },
+  "dependencies": {
+    "apollo-server": "^2.6.7",
+    "graphql": "^14.4.2"
+  }
+}
