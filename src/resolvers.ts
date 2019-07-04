@@ -37,6 +37,14 @@ const Mutation = {
     links[index] = link;
 
     return link;
+  },
+
+  deleteLink: (_: any, { id }: any) => {
+    const index = links.findIndex(link => link.id === id);
+    const link = links[index];
+    links = [...links.slice(0, index), ...links.slice(index + 1)];
+
+    return link;
   }
 };
 
