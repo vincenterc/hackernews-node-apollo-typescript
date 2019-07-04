@@ -9,6 +9,7 @@ const typeDefs = gql`
 
   type Mutation {
     post(url: String!, description: String!): Link!
+    updateLink(id: ID!, url: String, description: String): Link
   }
 
   type Link {

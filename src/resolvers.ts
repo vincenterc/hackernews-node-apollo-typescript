@@ -29,6 +29,14 @@ const Mutation = {
     links.push(link);
 
     return link;
+  },
+
+  updateLink: (_: any, { id, url, description }: any) => {
+    const index = links.findIndex(link => link.id === id);
+    const link = { id, url, description };
+    links[index] = link;
+
+    return link;
   }
 };
 
