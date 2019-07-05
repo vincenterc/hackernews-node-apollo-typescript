@@ -2,8 +2,10 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   CreateDateColumn,
-  Column
+  Column,
+  ManyToOne
 } from "typeorm";
+import { User } from "./User";
 
 @Entity()
 export class Link {
@@ -18,4 +20,7 @@ export class Link {
 
   @Column()
   url: string;
+
+  @ManyToOne(type => User, user => user.links)
+  postedBy: User;
 }

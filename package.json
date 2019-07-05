@@ -8,13 +8,17 @@
     "prod": "tsc && node ./build/index.js"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/graphql": "^14.2.2",
+    "@types/jsonwebtoken": "^8.3.2",
     "ts-node-dev": "^1.0.0-pre.40",
     "typescript": "^3.5.2"
   },
   "dependencies": {
     "apollo-server": "^2.6.7",
+    "bcryptjs": "^2.4.3",
     "graphql": "^14.4.2",
+    "jsonwebtoken": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^4.0.9",
     "typeorm": "^0.2.18"
