@@ -18,7 +18,8 @@ createConnection({
     const server = new ApolloServer({
       typeDefs,
       resolvers,
-      context: () => ({
+      context: request => ({
+        request,
         connection,
         entities
       })

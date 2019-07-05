@@ -1,13 +1,15 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-import { APP_SECRET } from "../utils";
+import { APP_SECRET, getUserId } from "../utils";
 
 async function post(_parent: any, args: any, context: any) {
+  const userId = getUserId(context);
   let Link = context.entities.Link;
   let link = new Link();
   link.url = args.url;
   link.description = args.description;
+  link.postedBy = userId;
 
   return await context.connection.manager.save(link);
 }
