@@ -8,9 +8,15 @@ async function feed(_parent: any, args: any, context: any) {
       ]
     : {};
 
+  let order = {};
+  if (args.orderBy) {
+    const [orderField, orderRule] = args.orderBy.split("_");
+    order = { [orderField]: orderRule };
+  }
+
   return await context.connection
     .getRepository(context.entities.Link)
-    .find({ where, skip: args.skip, take: args.first });
+    .find({ where, skip: args.skip, take: args.first, order });
 }
 
 export default {
