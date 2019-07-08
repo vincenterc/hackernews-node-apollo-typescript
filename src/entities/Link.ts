@@ -3,9 +3,12 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   Column,
-  ManyToOne
+  ManyToOne,
+  AfterInsert
 } from "typeorm";
+
 import { User } from "./User";
+import { pubSub, NEW_LINK } from "../resolvers/Subscription";
 
 @Entity()
 export class Link {
@@ -23,4 +26,9 @@ export class Link {
 
   @ManyToOne(type => User, user => user.links)
   postedBy: User;
+
+  @AfterInsert()
+  newLink() {
+    pubSub.publish(NEW_LINK, { newLink: this });
+  }
 }
