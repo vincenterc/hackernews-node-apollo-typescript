@@ -14,9 +14,11 @@ async function feed(_parent: any, args: any, context: any) {
     order = { [orderField]: orderRule };
   }
 
-  return await context.connection
+  let [links, count] = await context.connection
     .getRepository(context.entities.Link)
-    .find({ where, skip: args.skip, take: args.first, order });
+    .findAndCount({ where, skip: args.skip, take: args.first, order });
+
+  return { links, count };
 }
 
 export default {

@@ -8,7 +8,7 @@ const typeDefs = gql`
       skip: Int
       first: Int
       orderBy: LinkOrderByInput
-    ): [Link!]!
+    ): Feed!
   }
 
   type Mutation {
@@ -56,6 +56,11 @@ const typeDefs = gql`
     url_DESC
     createdAt_ASC
     createdAt_DESC
+  }
+
+  type Feed {
+    links: [Link!]!
+    count: Int!
   }
 `;
 
