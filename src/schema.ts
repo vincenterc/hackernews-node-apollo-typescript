@@ -3,7 +3,7 @@ import { gql } from "apollo-server";
 const typeDefs = gql`
   type Query {
     info: String!
-    feed: [Link!]!
+    feed(filter: String): [Link!]!
   }
 
   type Mutation {

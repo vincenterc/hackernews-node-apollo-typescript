@@ -1,9 +1,16 @@
-async function feed(_parent: any, _args: any, context: any) {
-  let Link = context.entities.Link;
+import { Like } from "typeorm";
+
+async function feed(_parent: any, args: any, context: any) {
+  const where = args.filter
+    ? [
+        { description: Like(`%${args.filter}%`) },
+        { url: Like(`%${args.filter}%`) }
+      ]
+    : {};
 
   return await context.connection
-    .getRepository(Link)
-    .find();
+    .getRepository(context.entities.Link)
+    .find({ where });
 }
 
 export default {
