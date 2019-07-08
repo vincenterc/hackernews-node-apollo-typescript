@@ -31,7 +31,7 @@ async function login(_parent: any, args: any, context: any) {
   let User = context.entities.User;
   let user = await context.connection
     .getRepository(User)
-    .findOne({ email: args.email, relations: ["links"] });
+    .findOne({ where: { email: args.email } });
 
   if (!user) throw new Error("No such user found");
 

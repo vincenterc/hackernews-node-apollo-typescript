@@ -3,7 +3,7 @@ async function feed(_parent: any, _args: any, context: any) {
 
   return await context.connection
     .getRepository(Link)
-    .find({ relations: ["postedBy"] });
+    .find();
 }
 
 export default {
