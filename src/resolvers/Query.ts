@@ -10,7 +10,7 @@ async function feed(_parent: any, args: any, context: any) {
 
   return await context.connection
     .getRepository(context.entities.Link)
-    .find({ where });
+    .find({ where, skip: args.skip, take: args.first });
 }
 
 export default {
