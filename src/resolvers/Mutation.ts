@@ -43,8 +43,24 @@ async function login(_parent: any, args: any, context: any) {
   return { token, user };
 }
 
+async function vote(_parent: any, args: any, context: any) {
+  const userId = getUserId(context);
+
+  const Vote = context.entities.Vote;
+  let vote = await context.connection
+    .getRepository(Vote)
+    .findOne({ where: { user: userId, link: args.linkId } });
+  if (vote) throw new Error(`Already voted for link: ${args.linkId}`);
+  vote = new Vote();
+  vote.user = userId;
+  vote.link = args.linkId;
+
+  return await context.connection.manager.save(vote);
+}
+
 export default {
   post,
   signup,
-  login
+  login,
+  vote
 };

@@ -10,10 +10,12 @@ const typeDefs = gql`
     post(url: String!, description: String!): Link!
     signup(email: String!, password: String!, name: String!): AuthPayload
     login(email: String!, password: String!): AuthPayload
+    vote(linkId: ID!): Vote
   }
 
   type Subscription {
     newLink: Link
+    newVote: Vote
   }
 
   type Link {
@@ -21,6 +23,7 @@ const typeDefs = gql`
     description: String!
     url: String!
     postedBy: User
+    votes: [Vote!]!
   }
 
   type AuthPayload {
@@ -33,6 +36,12 @@ const typeDefs = gql`
     name: String!
     email: String!
     links: [Link!]!
+  }
+
+  type Vote {
+    id: ID!
+    link: Link!
+    user: User!
   }
 `;
 
