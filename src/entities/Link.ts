@@ -4,10 +4,12 @@ import {
   CreateDateColumn,
   Column,
   ManyToOne,
+  OneToMany,
   AfterInsert
 } from "typeorm";
 
 import { User } from "./User";
+import { Vote } from "./Vote";
 import { pubSub, NEW_LINK } from "../resolvers/Subscription";
 
 @Entity()
@@ -26,6 +28,9 @@ export class Link {
 
   @ManyToOne(type => User, user => user.links)
   postedBy: User;
+
+  @OneToMany(type => Vote, vote => vote.link)
+  votes: Vote[];
 
   @AfterInsert()
   newLink() {

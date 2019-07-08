@@ -5,7 +5,9 @@ import {
   Unique,
   OneToMany
 } from "typeorm";
+
 import { Link } from "./Link";
+import { Vote } from "./Vote";
 
 @Entity()
 @Unique(["email"])
@@ -24,4 +26,7 @@ export class User {
 
   @OneToMany(type => Link, link => link.postedBy)
   links: Link[];
+
+  @OneToMany(type => Vote, vote => vote.user)
+  votes: Vote[];
 }
