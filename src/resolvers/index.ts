@@ -4,6 +4,7 @@ import Subscription from "./Subscription";
 import Link from "./Link";
 import User from "./User";
 import Vote from "./Vote";
+import Date from "./Date";
 
 export default {
   Query,
@@ -11,5 +12,6 @@ export default {
   Subscription,
   Link,
   User,
-  Vote
+  Vote,
+  Date
 };
