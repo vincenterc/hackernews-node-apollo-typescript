@@ -6,13 +6,17 @@ import typeDefs from "./schema";
 import resolvers from "./resolvers";
 import entities from "./entities";
 
+const entityArray = Object.keys(entities).reduce(
+  (acc, key) => [...acc, entities[key]],
+  []
+);
+
 createConnection({
   type: "sqlite",
   database: "db.sqlite3",
   synchronize: true,
   logging: false,
-  entities: ["src/entities/**/*.ts"],
-  migrations: ["src/migrations/**/*.ts"]
+  entities: entityArray
 })
   .then(connection => {
     const server = new ApolloServer({
