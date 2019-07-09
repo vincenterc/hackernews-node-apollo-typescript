@@ -27,6 +27,7 @@ const typeDefs = gql`
 
   type Link {
     id: ID!
+    createdAt: Date!
     description: String!
     url: String!
     postedBy: User
