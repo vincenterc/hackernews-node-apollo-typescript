@@ -1,5 +1,5 @@
 {
-  "name": "hackernews-express-apollo",
+  "name": "hackernews-express-apollo-typescript",
   "version": "1.0.0",
   "description": "The backend of a Hackernews with Node and Apollo.",
   "scripts": {
