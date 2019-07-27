@@ -1,4 +1,4 @@
-# hackernews-express-apollo 
+# hackernews-express-apollo-typescript
 
 The backend of a [Hackernews][] with Node and Apollo.
 
